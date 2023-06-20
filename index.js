@@ -31,7 +31,7 @@ app.get('/emptyResponse', (req, res, next) => {
 app.get("/data", (req, res, next) => {
     const status = authorize(req.headers.authorization);
     const response = extractResponse(status);
-    if (response.statusCode === 200) {
+    if (Number(response.statusCode) === 200) {
         res.status(200).send([
             {
                 "FirstName": "Joey",
