@@ -21,6 +21,7 @@ module.exports = (authorization) => {
             return `401 - Invalid login credentials, cannot generate JWT!`;
         }
     } catch(err) {
+        if(err.message === 'jwt expired') return `401 - Unauthorized, JWT Expired!`;
         return `500 - ${err.message || "Some error occurred!"}`;
     }
     return `200 - Successfully logged in as ${role}`;
