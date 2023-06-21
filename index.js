@@ -21,7 +21,9 @@ app.get("/health", (req, res, next) => {
 app.post("/login", (req, res, next) => {
     const status = authorize(req.headers.authorization);
     const response = extractResponse(status);
-    res.status(response.statusCode).send(response.statusMsg);
+    res.status(response.statusCode).send({
+        message: response.statusMsg
+    });
 });
 
 app.get('/emptyResponse', (req, res, next) => {
