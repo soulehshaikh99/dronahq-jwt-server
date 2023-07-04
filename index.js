@@ -26,6 +26,13 @@ app.post("/login", (req, res, next) => {
     });
 });
 
+app.all('/echo', (req, res, next) => {
+    res.status(200).send({
+        body: req.body,
+        headers: req.headers
+    });
+});
+
 app.get('/emptyResponse', (req, res, next) => {
     res.status(204).send();
 });
